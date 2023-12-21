@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -6,23 +8,40 @@ void main() {
   ));
 }
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  int kingdomPoints = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: const Text('Profile of King'),
+        title: Text('Profile of King'),
         centerTitle: true,
         titleTextStyle: TextStyle(
           color: Colors.grey[350],
         ),
         backgroundColor: Colors.grey[850],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() => kingdomPoints += 1);
+        },
+        backgroundColor: Colors.grey[800],
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: 30.0,
           top: 40.0,
           right: 30.0,
@@ -31,7 +50,7 @@ class Profile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Center(
+            Center(
               child: CircleAvatar(
                 backgroundImage: AssetImage('assets/lion.jpg'),
                 radius: 50.0,
@@ -41,7 +60,7 @@ class Profile extends StatelessWidget {
               height: 40.0,
               color: Colors.grey[800],
             ),
-            const Text(
+            Text(
               'NAME',
               style: TextStyle(
                 color: Colors.grey,
@@ -49,10 +68,10 @@ class Profile extends StatelessWidget {
                 fontSize: 12.0,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 2.0,
             ),
-            const Text(
+            Text(
               'King Hyper Gian',
               style: TextStyle(
                 color: Colors.redAccent,
@@ -61,22 +80,22 @@ class Profile extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 20.0,
             ),
-            const Text(
-              'KINGDOM HAVE',
+            Text(
+              'KINGDOM POINTS',
               style: TextStyle(
                 color: Colors.grey,
                 letterSpacing: 2.0,
                 fontSize: 12.0,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 2.0,
             ),
-            const Text(
-              '20 Kingdoms',
+            Text(
+              '$kingdomPoints',
               style: TextStyle(
                 color: Colors.redAccent,
                 letterSpacing: 2.0,
@@ -84,7 +103,7 @@ class Profile extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 20.0,
             ),
             Row(
@@ -94,10 +113,10 @@ class Profile extends StatelessWidget {
                   color: Colors.grey[350],
                   size: 20.0,
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 10.0,
                 ),
-                const Text(
+                Text(
                   'hypergian@king.com',
                   style: TextStyle(
                     color: Colors.redAccent,
